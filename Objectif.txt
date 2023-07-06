@@ -1,0 +1,9 @@
+Le but est d'avoir une application tkinter 
+
+Qui permet de créer des wishlist 
+    Chacune comprenant différent éléments
+
+Et des les sauvegarder dans des fichier .txt que l'on réouvre automatiquement à chaque lancement
+
+On doit donc pouvoir garder une mémoire de ce qui a été fait.
+
