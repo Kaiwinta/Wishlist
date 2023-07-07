@@ -1,9 +1,8 @@
 import csv
-fichier = open("testtext.txt",encoding='utf-8')
 
-liste_wish = fichier.readlines()
 
-with open('testtext.txt') as csv_file:
+with open('testtext.txt') as csv_file, open("clone.txt",'w') as clone:
+    
     #L'on ouvre en csv
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = 0
@@ -14,5 +13,10 @@ with open('testtext.txt') as csv_file:
             print(f'Column names are {", ".join(row)}')
             line_count += 1
         else:
-            print(f'\tThis url {row[0]} is {row[1]} and cost {row[2]}.')
+            print(f'{row[0]},{row[1]},{row[2]}')
+            clone.write(f'{row[0]},{row[1]},{row[2]}')
             line_count += 1
+
+
+
+    
