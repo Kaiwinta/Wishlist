@@ -2,4 +2,4 @@
 ['prix', 'url', 'nom']
 ['p', 'url', 'nom']
 ['p', 'url', 'nom']
-['p', 'url', 'nom']
+['p']
