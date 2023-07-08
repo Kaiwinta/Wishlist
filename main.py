@@ -1,4 +1,5 @@
 import tkinter as tk
+import Wishlistopener as wlo
 
 palette = ["#16697A","#489FB5","#82C0CC","#EDE7E3","#FFA62B"]
 
