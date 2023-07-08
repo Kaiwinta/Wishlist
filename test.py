@@ -1,6 +1,6 @@
 import csv
 
-def creerWishList(nom,elements,titre):
+def Savewishlist(nom,elements,titre):
     """
         Objectif:
             Créer un fichier txt contenant toutes les données 
@@ -30,4 +30,4 @@ elements= [
 ]
 titre   = ["prix obj","url","nom"]
 
-creerWishList(nom, elements , titre)
+Savewishlist(nom, elements , titre)
