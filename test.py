@@ -17,6 +17,16 @@ def Savewishlist(nom,elements,titre):
         for i in range(len(elements)):
             nom.write(f'{elements[i]}\n')
 
+def openWishlist(nom):
+
+    with open(f'{nom}.txt') as csvfile:
+        liste_wish = []
+        csv_reader = csv.reader(csvfile, delimiter=',')
+        for line in csv_reader:
+            liste_wish.append(line)
+
+    return liste_wish
+
 
 nom = 'test3'
 
@@ -31,3 +41,5 @@ elements= [
 titre   = ["prix obj","url","nom"]
 
 Savewishlist(nom, elements , titre)
+
+print(openWishlist(nom))
