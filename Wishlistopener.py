@@ -10,13 +10,13 @@ def Savewishlist(nom,elements):
             elements = nested list des données
     """
 
-    with open(f'{nom}.txt', 'w') as file:
+    with open(f'wishlist/{nom}.txt', 'w') as file:
         for sublist in elements:
             file.write(','.join(sublist) + '\n')  # Write each element of the sublist separated by commas
 
 def openWishlist(nom):
 
-    with open(f'{nom}.txt') as csvfile:
+    with open(f'wishlist/{nom}.txt') as csvfile:
         liste_wish = []
         csv_reader = csv.reader(csvfile, delimiter=',')
         for line in csv_reader:
