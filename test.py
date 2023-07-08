@@ -1,6 +1,6 @@
 import csv
 
-def Savewishlist(nom,elements,titre):
+def Savewishlist(nom,elements):
     """
         Objectif:
             Créer un fichier txt contenant toutes les données 
@@ -8,14 +8,11 @@ def Savewishlist(nom,elements,titre):
         Variables:
             nom = nom de la wishlist
             elements = nested list des données
-            titre = titre des données
     """
 
-    with open(f'{nom}.txt','w') as nom:
-        nom.write(f'{titre[:]}\n')
-
-        for i in range(len(elements)):
-            nom.write(f'{elements[i]}\n')
+    with open(f'{nom}.txt', 'w') as file:
+        for sublist in elements:
+            file.write(','.join(sublist) + '\n')  # Write each element of the sublist separated by commas
 
 def openWishlist(nom):
 
@@ -28,18 +25,23 @@ def openWishlist(nom):
     return liste_wish
 
 
+
 nom = 'test3'
 
 elements= [
+    ["prix obj","url","nom"],
     ["prix",'url',"nom"],
     ["p","url","nom"],
     ["p","url","nom"],
-    ["p"]
+    ["p","url",'nom']
     
 
 ]
-titre   = ["prix obj","url","nom"]
+nom2 = 'test5'
 
-Savewishlist(nom, elements , titre)
+Savewishlist(nom2, elements)
 
-print(openWishlist(nom))
+liste = openWishlist(nom)
+
+Savewishlist(nom, liste)
+print(liste)
