@@ -47,10 +47,9 @@ def main():
 
         def openWishlist(event=None):
             nomliste = listeWishlist.get(listeWishlist.curselection())
-            print(nomliste)
             if nomliste:
                 
-                wlo.openWishlist(nomliste)
+                print(wlo.openWishlist(nomliste))
 
         listeWishlist.bind("<Configure>", searchlist)
         listeWishlist.bind('<<ListboxSelect>>', openWishlist)
