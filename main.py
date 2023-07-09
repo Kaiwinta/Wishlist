@@ -35,11 +35,25 @@ def main():
         botline  = tk.Frame(leftframe, bg=palette[0])
         botline.place(relheight=0.03 , relwidth=1 , relx=0, rely=0.97)
 
-
-        titleFrame =tk.Frame(leftframe, bg= palette[4])
-        titleFrame.place(relheight=0.2 , relwidth=0.9 , relx=0.05 , rely=0.09)
-
+        titleLabel = tk.Label(leftframe, bg= palette[4], text= "Your Wishlist")
+        titleLabel.place(relheight=0.2 , relwidth=0.9 , relx=0.05 , rely=0.09)
         
+        listeWishlist = tk.Listbox(leftframe, bg= palette[3])
+        listeWishlist.place(relheight=0.6 , relwidth=0.8 , relx=0.1 , rely=0.35)
+
+        def searchlist(event=None):
+            liste_item = tk.Variable(value= wlo.getwishlistname())
+            listeWishlist.config(listvariable=liste_item)
+
+        def openWishlist(event=None):
+            nomliste = listeWishlist.get(listeWishlist.curselection())
+            print(nomliste)
+            if nomliste:
+                
+                wlo.openWishlist(nomliste)
+
+        listeWishlist.bind("<Configure>", searchlist)
+        listeWishlist.bind('<<ListboxSelect>>', openWishlist)
 
     def RightFrame():
         rightframe =tk.Frame(root, bg=palette[1])
@@ -51,9 +65,8 @@ def main():
         botline  = tk.Frame(rightframe, bg=palette[0])
         botline.place(relheight=0.03 , relwidth=1 , relx=0, rely=0.97)
 
-
-        titleFrame =tk.Frame(rightframe, bg= palette[4])
-        titleFrame.place(relheight=0.2 , relwidth=0.9 , relx=0.05 , rely=0.09)
+        titleLabel = tk.Label(rightframe, bg= palette[4], text= "New Wishlist")
+        titleLabel.place(relheight=0.2 , relwidth=0.9 , relx=0.05 , rely=0.09)
     
 
     TopFrame()

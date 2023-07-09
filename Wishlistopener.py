@@ -21,7 +21,7 @@ def openWishlist(nom):
             Renvoie une liste utilisable en python 
             Cette liste contient tout les élements d'un fichier txt
     """
-    with open(f'wishlist/{nom}.txt') as csvfile:
+    with open(f'wishlist/{nom}') as csvfile:
         liste_wish = []
         csv_reader = reader(csvfile, delimiter=',')
         for line in csv_reader:
