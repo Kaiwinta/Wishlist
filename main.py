@@ -49,8 +49,7 @@ def main():
             nomliste = listeWishlist.get(listeWishlist.curselection())
             if nomliste:
                 UpdateWishlist(nomliste)
-                print(wlo.openWishlist(nomliste))
-
+                
         listeWishlist.bind("<Configure>", searchlist)
         listeWishlist.bind('<<ListboxSelect>>', openWishlist)
 
@@ -74,6 +73,8 @@ def main():
     root.mainloop()
 
 def UpdateWishlist(nom):
+    global palette
+
     root = tk.Toplevel()  
     root.geometry("800x450+{}+{}".format(int(root.winfo_screenwidth()/2 - 400), int(root.winfo_screenheight()/2 - 225)))
 
@@ -81,6 +82,17 @@ def UpdateWishlist(nom):
     root.title("Updatewishlist")
     root.bind('<Escape>',lambda e: root.destroy())
     root.configure(bg=palette[2])
+
+    def afficherliste(nom):
+        t = wlo.openWishlist(nom)
+
+        for i in range (len(t)):
+            listWish.insert(tk.END, t[i])
+
+    listWish=  tk.Listbox(root, bg= palette[3])
+    listWish.place(relheight=0.6 , relwidth=0.8 , relx=0.1 , rely= 0.2)
+
+    listWish.bind("<Configure>", afficherliste(nom))
 
 
 if __name__ == "__main__":
