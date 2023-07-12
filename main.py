@@ -84,15 +84,18 @@ def UpdateWishlist(nom):
     root.configure(bg=palette[2])
 
     def afficherliste(nom):
+        print(nom)
         t = wlo.openWishlist(nom)
-
-        for i in range (len(t)):
-            listWish.insert(tk.END, t[i])
+        try:
+            for i in range (len(t)):
+                listWish.insert(tk.END, t[i])
+        except:
+            return 0
 
     listWish=  tk.Listbox(root, bg= palette[3])
     listWish.place(relheight=0.6 , relwidth=0.8 , relx=0.1 , rely= 0.2)
 
-    listWish.bind("<Configure>", afficherliste(nom))
+    listWish.bind("<Expose>", afficherliste(nom))
 
 
 if __name__ == "__main__":
