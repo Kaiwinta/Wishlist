@@ -51,7 +51,7 @@ def main():
                 UpdateWishlist(nomliste)
                 
         listeWishlist.bind("<Configure>", searchlist)
-        listeWishlist.bind('<<ListboxSelect>>', openWishlist)
+        listeWishlist.bind('<Double-1>', openWishlist)
 
     def RightFrame():
         rightframe =tk.Frame(root, bg=palette[1])
@@ -88,14 +88,22 @@ def UpdateWishlist(nom):
         t = wlo.openWishlist(nom)
         try:
             for i in range (len(t)):
-                listWish.insert(tk.END, t[i])
+                listUrl.insert(tk.END, t[i][0])
+                listNom.insert(tk.END, t[i][1])
+                listPrix.insert(tk.END, t[i][2])
         except:
             return 0
 
-    listWish=  tk.Listbox(root, bg= palette[3])
-    listWish.place(relheight=0.6 , relwidth=0.8 , relx=0.1 , rely= 0.2)
+    listUrl=  tk.Listbox(root, bg= palette[3])
+    listUrl.place(relheight=0.6 , relwidth=0.2 , relx=0.1 , rely= 0.2)
 
-    listWish.bind("<Expose>", afficherliste(nom))
+    listNom=  tk.Listbox(root, bg= palette[3])
+    listNom.place(relheight=0.6 , relwidth=0.2 , relx=0.4 , rely= 0.2)
+
+    listPrix=  tk.Listbox(root, bg= palette[3])
+    listPrix.place(relheight=0.6 , relwidth=0.2 , relx=0.7 , rely= 0.2)
+
+    root.bind("<Expose>", afficherliste(nom))
 
 
 if __name__ == "__main__":
