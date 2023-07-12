@@ -1,4 +1,4 @@
-[url],[nom],[prix]
+[Url de L'obejt],[Nom de l'objet],[Prix en Euro]
 [url1],[ecran 1],[110]
 [url1],[ecran 2],[110]
 [url1],[planche lapkapten],[50]

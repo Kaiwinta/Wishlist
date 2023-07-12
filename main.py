@@ -38,7 +38,7 @@ def main():
         titleLabel = tk.Label(leftframe, bg= palette[4], text= "Your Wishlist")
         titleLabel.place(relheight=0.2 , relwidth=0.9 , relx=0.05 , rely=0.09)
         
-        listeWishlist = tk.Listbox(leftframe, bg= palette[3])
+        listeWishlist = tk.Listbox(leftframe, bg= palette[3],justify='center')
         listeWishlist.place(relheight=0.6 , relwidth=0.8 , relx=0.1 , rely=0.35)
 
         def searchlist(event=None):
@@ -83,26 +83,39 @@ def UpdateWishlist(nom):
     root.bind('<Escape>',lambda e: root.destroy())
     root.configure(bg=palette[2])
 
+    def TopFrame():
+        topframe = tk.Frame(root, bg= palette[0])
+        topframe.place(relheight=0.1 , relwidth=1 , relx=0, rely=0.07)
+
+        topline  = tk.Frame(topframe, bg=palette[4])
+        topline.place(relheight=0.05 , relwidth=1 , relx=0, rely=0)
+
+        botline  = tk.Frame(topframe, bg=palette[4])
+        botline.place(relheight=0.05 , relwidth=1 , relx=0, rely=0.95)
+
     def afficherliste(nom):
-        print(nom)
         t = wlo.openWishlist(nom)
-        try:
-            for i in range (len(t)):
-                listUrl.insert(tk.END, t[i][0])
-                listNom.insert(tk.END, t[i][1])
-                listPrix.insert(tk.END, t[i][2])
-        except:
-            return 0
+        listUrl.insert(tk.END, t[0][0][1:-1])
+        listNom.insert(tk.END, t[0][1][1:-1])
+        listPrix.insert(tk.END, t[0][2][1:-1])
 
-    listUrl=  tk.Listbox(root, bg= palette[3])
-    listUrl.place(relheight=0.6 , relwidth=0.2 , relx=0.1 , rely= 0.2)
+        listUrl.insert(tk.END, '')
+        listNom.insert(tk.END, '')
+        listPrix.insert(tk.END, '')
+        for i in range (1,len(t)):
+            listUrl.insert(tk.END, t[i][0][1:-1])
+            listNom.insert(tk.END, t[i][1][1:-1])
+            listPrix.insert(tk.END, t[i][2][1:-1])
+    
+    listUrl=  tk.Listbox(root, bg= palette[0],justify='center')
+    listUrl.place(relheight=0.5 , relwidth=0.2 , relx=0.15 , rely= 0.22)
 
-    listNom=  tk.Listbox(root, bg= palette[3])
-    listNom.place(relheight=0.6 , relwidth=0.2 , relx=0.4 , rely= 0.2)
+    listNom=  tk.Listbox(root, bg= palette[1],justify='center')
+    listNom.place(relheight=0.5 , relwidth=0.2 , relx=0.4 , rely= 0.22)
 
-    listPrix=  tk.Listbox(root, bg= palette[3])
-    listPrix.place(relheight=0.6 , relwidth=0.2 , relx=0.7 , rely= 0.2)
-
+    listPrix=  tk.Listbox(root, bg= palette[0],justify='center')
+    listPrix.place(relheight=0.5 , relwidth=0.2 , relx=0.65 , rely= 0.22)
+    TopFrame()
     root.bind("<Expose>", afficherliste(nom))
 
 
