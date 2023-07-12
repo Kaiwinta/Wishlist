@@ -83,15 +83,18 @@ def UpdateWishlist(nom):
     root.bind('<Escape>',lambda e: root.destroy())
     root.configure(bg=palette[2])
 
-    def TopFrame():
-        topframe = tk.Frame(root, bg= palette[0])
-        topframe.place(relheight=0.1 , relwidth=1 , relx=0, rely=0.07)
 
-        topline  = tk.Frame(topframe, bg=palette[4])
-        topline.place(relheight=0.05 , relwidth=1 , relx=0, rely=0)
+    topframe = tk.Frame(root, bg= palette[0])
+    topframe.place(relheight=0.1 , relwidth=1 , relx=0, rely=0.07)
 
-        botline  = tk.Frame(topframe, bg=palette[4])
-        botline.place(relheight=0.05 , relwidth=1 , relx=0, rely=0.95)
+    LabelTitre = tk.Label(topframe, bg=palette[0],text= f'Affichage et modification de {nom}',font=('actual',14),foreground=palette[4])
+    LabelTitre.pack(side="bottom")
+
+    topline  = tk.Frame(topframe, bg=palette[4])
+    topline.place(relheight=0.05 , relwidth=1 , relx=0, rely=0)
+
+    botline  = tk.Frame(topframe, bg=palette[4])
+    botline.place(relheight=0.05 , relwidth=1 , relx=0, rely=0.95)
 
     def afficherliste(nom):
         t = wlo.openWishlist(nom)
@@ -115,7 +118,7 @@ def UpdateWishlist(nom):
 
     listPrix=  tk.Listbox(root, bg= palette[0],justify='center')
     listPrix.place(relheight=0.5 , relwidth=0.2 , relx=0.65 , rely= 0.22)
-    TopFrame()
+    
     root.bind("<Expose>", afficherliste(nom))
 
 
