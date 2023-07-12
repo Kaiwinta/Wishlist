@@ -87,29 +87,33 @@ def UpdateWishlist(nom):
     topframe = tk.Frame(root, bg= palette[0])
     topframe.place(relheight=0.1 , relwidth=1 , relx=0, rely=0.07)
 
-    LabelTitre = tk.Label(topframe, bg=palette[0],text= f'Affichage et modification de {nom}',font=('actual',14),foreground=palette[4])
-    LabelTitre.pack(side="bottom")
-
+    LabelTitre = tk.Label(topframe, bg=palette[0],text= f'Affichage et modification de {nom}',font=('actual',14),foreground=palette[3])
+    LabelTitre.place(rely=0.2,relx=0.3-len(nom)*0.003)
+    
     topline  = tk.Frame(topframe, bg=palette[4])
-    topline.place(relheight=0.05 , relwidth=1 , relx=0, rely=0)
+    topline.place(relheight=0.1 , relwidth=1 , relx=0, rely=0)
 
     botline  = tk.Frame(topframe, bg=palette[4])
-    botline.place(relheight=0.05 , relwidth=1 , relx=0, rely=0.95)
+    botline.place(relheight=0.1 , relwidth=1 , relx=0, rely=0.9)
 
     def afficherliste(nom):
-        t = wlo.openWishlist(nom)
-        listUrl.insert(tk.END, t[0][0][1:-1])
-        listNom.insert(tk.END, t[0][1][1:-1])
-        listPrix.insert(tk.END, t[0][2][1:-1])
+        try:
+            t = wlo.openWishlist(nom)
+            listUrl.insert(tk.END, t[0][0][1:-1])
+            listNom.insert(tk.END, t[0][1][1:-1])
+            listPrix.insert(tk.END, t[0][2][1:-1])
 
-        listUrl.insert(tk.END, '')
-        listNom.insert(tk.END, '')
-        listPrix.insert(tk.END, '')
-        for i in range (1,len(t)):
-            listUrl.insert(tk.END, t[i][0][1:-1])
-            listNom.insert(tk.END, t[i][1][1:-1])
-            listPrix.insert(tk.END, t[i][2][1:-1])
-    
+            listUrl.insert(tk.END, '')
+            listNom.insert(tk.END, '')
+            listPrix.insert(tk.END, '')
+
+            for i in range (1,len(t)):
+                listUrl.insert(tk.END, t[i][0][1:-1])
+                listNom.insert(tk.END, t[i][1][1:-1])
+                listPrix.insert(tk.END, t[i][2][1:-1])
+        except:
+            return 0
+        
     listUrl=  tk.Listbox(root, bg= palette[0],justify='center')
     listUrl.place(relheight=0.5 , relwidth=0.2 , relx=0.15 , rely= 0.22)
 
