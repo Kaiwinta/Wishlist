@@ -87,8 +87,14 @@ def UpdateWishlist(nom):
     topframe = tk.Frame(root, bg= palette[0])
     topframe.place(relheight=0.1 , relwidth=1 , relx=0, rely=0.07)
 
+    midline = tk.Frame(topframe, bg=palette[1])
+    midline.place(relheight=0.1 , relwidth=1 , relx=0, rely=0.45)
+
+    levelFrame = tk.Frame(topframe,bg=palette[0],height=10)
+    levelFrame.pack(side="bottom" , fill='x')
+
     LabelTitre = tk.Label(topframe, bg=palette[0],text= f'Affichage et modification de {nom}',font=('actual',14),foreground=palette[3])
-    LabelTitre.place(rely=0.2,relx=0.3-len(nom)*0.003)
+    LabelTitre.pack(side='bottom')
     
     topline  = tk.Frame(topframe, bg=palette[4])
     topline.place(relheight=0.1 , relwidth=1 , relx=0, rely=0)
@@ -122,6 +128,15 @@ def UpdateWishlist(nom):
 
     listPrix=  tk.Listbox(root, bg= palette[0],justify='center')
     listPrix.place(relheight=0.5 , relwidth=0.2 , relx=0.65 , rely= 0.22)
+
+    addButton = tk.Button(root,bg=palette[1],activebackground=palette[0])
+    addButton.place(relheight=0.06, relwidth=0.12, relx=0.2, rely=0.8)
+
+    deleteButton = tk.Button(root,bg=palette[0],activebackground=palette[1])
+    deleteButton.place(relheight=0.06, relwidth=0.12, relx=0.45, rely=0.8)
+
+    saveButton = tk.Button(root,bg=palette[1],activebackground=palette[0])
+    saveButton.place(relheight=0.06, relwidth=0.12, relx=0.7, rely=0.8)
     
     root.bind("<Expose>", afficherliste(nom))
 
