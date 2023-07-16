@@ -105,14 +105,11 @@ def UpdateWishlist(nom):
     def afficherliste(nom):
         try:
             t = wlo.openWishlist(nom)
-            listUrl.insert(tk.END, t[0][0][1:-1])
-            listNom.insert(tk.END, t[0][1][1:-1])
-            listPrix.insert(tk.END, t[0][2][1:-1])
-
-            for i in range (1,len(t)):
-                listUrl.insert(tk.END, t[i][0][1:-1])
-                listNom.insert(tk.END, t[i][1][1:-1])
-                listPrix.insert(tk.END, t[i][2][1:-1])
+            
+            for i in range (0,len(t)):
+                listUrl.insert(tk.END, t[i][0])
+                listNom.insert(tk.END, t[i][1])
+                listPrix.insert(tk.END, t[i][2])
         except:
             return 0
         
@@ -121,7 +118,14 @@ def UpdateWishlist(nom):
         liste_nom= listNom.get(0,tk.END)
         liste_url = listUrl.get(0,tk.END)
         liste_prix = listPrix.get(0,tk.END)
-        
+
+        element = []
+        for i in range(len(liste_nom)):
+            element.append([liste_url[i],liste_nom[i],liste_prix[i]])
+        print(element)
+
+        wlo.Savewishlist('Seondeessaiavecuntitrelong',element)
+        print('ended')
         
     listUrl=  tk.Listbox(root, bg= palette[0],justify='center')
     listUrl.place(relheight=0.5 , relwidth=0.2 , relx=0.15 , rely= 0.22)
