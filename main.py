@@ -109,16 +109,19 @@ def UpdateWishlist(nom):
             listNom.insert(tk.END, t[0][1][1:-1])
             listPrix.insert(tk.END, t[0][2][1:-1])
 
-            listUrl.insert(tk.END, '')
-            listNom.insert(tk.END, '')
-            listPrix.insert(tk.END, '')
-
             for i in range (1,len(t)):
                 listUrl.insert(tk.END, t[i][0][1:-1])
                 listNom.insert(tk.END, t[i][1][1:-1])
                 listPrix.insert(tk.END, t[i][2][1:-1])
         except:
             return 0
+        
+    def savewishlist():
+        
+        liste_nom= listNom.get(0,tk.END)
+        liste_url = listUrl.get(0,tk.END)
+        liste_prix = listPrix.get(0,tk.END)
+        
         
     listUrl=  tk.Listbox(root, bg= palette[0],justify='center')
     listUrl.place(relheight=0.5 , relwidth=0.2 , relx=0.15 , rely= 0.22)
@@ -135,7 +138,7 @@ def UpdateWishlist(nom):
     deleteButton = tk.Button(root,bg=palette[0],activebackground=palette[1])
     deleteButton.place(relheight=0.06, relwidth=0.12, relx=0.45, rely=0.8)
 
-    saveButton = tk.Button(root,bg=palette[1],activebackground=palette[0])
+    saveButton = tk.Button(root,bg=palette[1],activebackground=palette[0], command = savewishlist)
     saveButton.place(relheight=0.06, relwidth=0.12, relx=0.7, rely=0.8)
     
     root.bind("<Expose>", afficherliste(nom))
