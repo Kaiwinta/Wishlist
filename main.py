@@ -113,8 +113,12 @@ def UpdateWishlist(nom):
         except:
             return 0
         
-    def savewishlist():
-        
+    def savebutton():
+        """
+            Objective:
+                Turning the data from the 3 listbox into a list that can be used 
+                this list will be read by the function in Wishlistopener that will save all correctly
+        """
         liste_nom= listNom.get(0,tk.END)
         liste_url = listUrl.get(0,tk.END)
         liste_prix = listPrix.get(0,tk.END)
@@ -122,11 +126,11 @@ def UpdateWishlist(nom):
         element = []
         for i in range(len(liste_nom)):
             element.append([liste_url[i],liste_nom[i],liste_prix[i]])
-        print(element)
+        wlo.Savewishlist(nom,element)
 
-        wlo.Savewishlist('Seondeessaiavecuntitrelong',element)
-        print('ended')
+        savebutton.config(text= 'Saved !!!')
         
+    #Adding the 3 listbox
     listUrl=  tk.Listbox(root, bg= palette[0],justify='center')
     listUrl.place(relheight=0.5 , relwidth=0.2 , relx=0.15 , rely= 0.22)
 
@@ -136,17 +140,20 @@ def UpdateWishlist(nom):
     listPrix=  tk.Listbox(root, bg= palette[0],justify='center')
     listPrix.place(relheight=0.5 , relwidth=0.2 , relx=0.65 , rely= 0.22)
 
+
+    #Adding the 3 bottom Button
     addButton = tk.Button(root,bg=palette[1],activebackground=palette[0])
     addButton.place(relheight=0.06, relwidth=0.12, relx=0.2, rely=0.8)
 
     deleteButton = tk.Button(root,bg=palette[0],activebackground=palette[1])
     deleteButton.place(relheight=0.06, relwidth=0.12, relx=0.45, rely=0.8)
 
-    saveButton = tk.Button(root,bg=palette[1],activebackground=palette[0], command = savewishlist)
+    saveButton = tk.Button(root,bg=palette[1],activebackground=palette[0], command = savebutton)
     saveButton.place(relheight=0.06, relwidth=0.12, relx=0.7, rely=0.8)
     
+    #The expose binding allow us the show the wishlist when we call updateWishlist()
     root.bind("<Expose>", afficherliste(nom))
 
-
+#The call of the function
 if __name__ == "__main__":
     main()
