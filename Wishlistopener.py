@@ -1,5 +1,17 @@
 from csv import reader
 from os import listdir
+"""
+This is the logical part of the projekt:
+
+The goal here is to deal only with list and files
+    We muss turn a list into a certain files
+    Or Open a file and extract dat in a list
+
+    Or Find all the files in a specific folder(wishlist)
+
+No tkinter are involved here, the tk part is in main.py and will call those functions
+"""
+
 
 def Savewishlist(nom,elements):
     """
