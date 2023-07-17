@@ -75,7 +75,6 @@ def main():
 
 def UpdateWishlist(nom):
     global palette
-
     root = tk.Toplevel()  
     root.geometry("800x450+{}+{}".format(int(root.winfo_screenwidth()/2 - 400), int(root.winfo_screenheight()/2 - 225)))
 
@@ -128,7 +127,8 @@ def UpdateWishlist(nom):
         element = []
         for i in range(len(liste_nom)):
             element.append([liste_url[i],liste_nom[i],liste_prix[i]])
-        wlo.Savewishlist(nom,element)
+        print(nom)
+        wlo.Savewishlist(nom[0:-4],element)
 
         saveButton.config(text= 'Saved !!!')
 
@@ -155,10 +155,11 @@ def UpdateWishlist(nom):
         prixEntree.pack(side = 'bottom')
 
         def sendadding():
-            print(nomEntree.get())
             listNom.insert(tk.END,nomEntree.get())
             listPrix.insert(tk.END,prixEntree.get())
             listUrl.insert(tk.END,urlEntree.get())
+
+            urlEntree.config(textvariable='')
             saving()
 
         validerButton = tk.Button(addwindow,text='Ajouter',command=sendadding)
