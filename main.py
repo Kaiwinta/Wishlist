@@ -145,13 +145,13 @@ def UpdateWishlist(nom):
         addwindow.configure(bg=palette[2])
 
         urlEntree = tk.Entry(addwindow)
-        urlEntree.place(relheight=0.2 , relwidth=0.25)
+        urlEntree.place(relheight=0.14 , relwidth=0.25, relx=0.05 , rely=0.4)
 
         nomEntree = tk.Entry(addwindow)
-        nomEntree.pack(side='bottom')
+        nomEntree.place(relheight=0.14 , relwidth=0.25,relx=0.375, rely=0.3)
 
         prixEntree = tk.Entry(addwindow)
-        prixEntree.pack(side = 'bottom')
+        prixEntree.place(relheight=0.14 , relwidth=0.25,relx=0.70, rely=0.4)
 
         def sendadding():
 
@@ -174,10 +174,10 @@ def UpdateWishlist(nom):
                 print('faux')
 
         validerButton = tk.Button(addwindow,text='Ajouter',command=sendadding)
-        validerButton.pack(side='top')
+        validerButton.place(relheight=0.1 , relwidth=0.25 , relx=0.2 , rely=0.7)
 
         closeButton = tk.Button(addwindow,text='Stop adding',command= addwindow.destroy)
-        closeButton.pack(side='left')
+        closeButton.place(relheight=0.1 , relwidth=0.25, relx=0.55, rely=0.7)
 
     def deleting():
         print("")
