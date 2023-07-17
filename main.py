@@ -127,7 +127,6 @@ def UpdateWishlist(nom):
         element = []
         for i in range(len(liste_nom)):
             element.append([liste_url[i],liste_nom[i],liste_prix[i]])
-        print(nom)
         wlo.Savewishlist(nom[0:-4],element)
 
         saveButton.config(text= 'Saved !!!')
@@ -155,12 +154,24 @@ def UpdateWishlist(nom):
         prixEntree.pack(side = 'bottom')
 
         def sendadding():
-            listNom.insert(tk.END,nomEntree.get())
-            listPrix.insert(tk.END,prixEntree.get())
-            listUrl.insert(tk.END,urlEntree.get())
 
-            urlEntree.config(textvariable='')
-            saving()
+            nom = nomEntree.get()
+            prix = prixEntree.get()
+            url = urlEntree.get()
+
+            if prix and nom and url :
+                    
+                listNom.insert(tk.END,nom)
+                listPrix.insert(tk.END,url)
+                listUrl.insert(tk.END,url)
+
+                urlEntree.delete(0,tk.END)
+                prixEntree.delete(0,tk.END)
+                urlEntree.delete(0,tk.END)
+                saving()
+
+            else:
+                print('faux')
 
         validerButton = tk.Button(addwindow,text='Ajouter',command=sendadding)
         validerButton.pack(side='top')
@@ -168,6 +179,8 @@ def UpdateWishlist(nom):
         closeButton = tk.Button(addwindow,text='Stop adding',command= addwindow.destroy)
         closeButton.pack(side='left')
 
+    def deleting():
+        print("")
         
     #Adding the 3 listbox
     listUrl=  tk.Listbox(root, bg= palette[0],justify='center')
