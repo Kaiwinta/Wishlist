@@ -9,6 +9,7 @@ def main():
     root = tk.Tk()  
     root.geometry("800x450+{}+{}".format(int(root.winfo_screenwidth()/2 - 400), int(root.winfo_screenheight()/2 - 225)))
 
+    root.focus_set()
     root.resizable(False,False)
     root.title("Kaiwinta's Wishlist")
     root.bind('<Escape>',lambda e: root.destroy())
@@ -78,6 +79,7 @@ def UpdateWishlist(nom):
     root = tk.Toplevel()  
     root.geometry("800x450+{}+{}".format(int(root.winfo_screenwidth()/2 - 400), int(root.winfo_screenheight()/2 - 225)))
 
+    root.focus_set()
     root.resizable(False,False)
     root.title("Updatewishlist")
     root.bind('<Escape>',lambda e: root.destroy())
@@ -142,6 +144,28 @@ def UpdateWishlist(nom):
         addwindow.title("Adding Elements")
         addwindow.bind('<Escape>',lambda e: addwindow.destroy())
         addwindow.configure(bg=palette[2])
+
+        urlEntree = tk.Entry(addwindow)
+        urlEntree.place(relheight=0.2 , relwidth=0.25)
+
+        nomEntree = tk.Entry(addwindow)
+        nomEntree.pack(side='bottom')
+
+        prixEntree = tk.Entry(addwindow)
+        prixEntree.pack(side = 'bottom')
+
+        def sendadding():
+            print(nomEntree.get())
+            listNom.insert(tk.END,nomEntree.get())
+            listPrix.insert(tk.END,prixEntree.get())
+            listUrl.insert(tk.END,urlEntree.get())
+            saving()
+
+        validerButton = tk.Button(addwindow,text='Ajouter',command=sendadding)
+        validerButton.pack(side='top')
+
+        closeButton = tk.Button(addwindow,text='Stop adding',command= addwindow.destroy)
+        closeButton.pack(side='left')
 
         
     #Adding the 3 listbox
