@@ -113,7 +113,7 @@ def UpdateWishlist(nom):
         except:
             return 0
         
-    def savebutton():
+    def saving():
         """
             Objective:
                 Turning the data from the 3 listbox into a list that can be used 
@@ -128,7 +128,21 @@ def UpdateWishlist(nom):
             element.append([liste_url[i],liste_nom[i],liste_prix[i]])
         wlo.Savewishlist(nom,element)
 
-        savebutton.config(text= 'Saved !!!')
+        saveButton.config(text= 'Saved !!!')
+
+    def adding():
+        """
+            Objective : show a pop up windows that allow us to add an element 
+            or many 
+        """
+        addwindow = tk.Toplevel()  
+        addwindow.geometry("400x250+{}+{}".format(int(addwindow.winfo_screenwidth()/2 - 200), int(addwindow.winfo_screenheight()/2 - 112)))
+        addwindow.focus_set()
+        addwindow.resizable(False,False)
+        addwindow.title("Adding Elements")
+        addwindow.bind('<Escape>',lambda e: addwindow.destroy())
+        addwindow.configure(bg=palette[2])
+
         
     #Adding the 3 listbox
     listUrl=  tk.Listbox(root, bg= palette[0],justify='center')
@@ -142,13 +156,13 @@ def UpdateWishlist(nom):
 
 
     #Adding the 3 bottom Button
-    addButton = tk.Button(root,bg=palette[1],activebackground=palette[0])
+    addButton = tk.Button(root,bg=palette[1],activebackground=palette[0], text='Add', command=adding)
     addButton.place(relheight=0.06, relwidth=0.12, relx=0.2, rely=0.8)
 
     deleteButton = tk.Button(root,bg=palette[0],activebackground=palette[1])
     deleteButton.place(relheight=0.06, relwidth=0.12, relx=0.45, rely=0.8)
 
-    saveButton = tk.Button(root,bg=palette[1],activebackground=palette[0], command = savebutton)
+    saveButton = tk.Button(root,bg=palette[1],activebackground=palette[0], command = saving, text='Save')
     saveButton.place(relheight=0.06, relwidth=0.12, relx=0.7, rely=0.8)
     
     #The expose binding allow us the show the wishlist when we call updateWishlist()
