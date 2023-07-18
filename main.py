@@ -4,7 +4,7 @@ import Wishlistopener as wlo
 palette = ["#16697A","#489FB5","#82C0CC","#EDE7E3","#FFA62B"]
 
 def main():
-    global palette
+    global palette, listeWishlist
 
     root = tk.Tk()  
     root.geometry("800x450+{}+{}".format(int(root.winfo_screenwidth()/2 - 400), int(root.winfo_screenheight()/2 - 225)))
@@ -27,6 +27,7 @@ def main():
 
 
     def LeftFrame():
+        global listeWishlist
         leftframe =tk.Frame(root, bg=palette[1])
         leftframe.place(relheight=0.5 , relwidth=0.35 ,relx=0.1 , rely=0.4)
 
@@ -55,6 +56,14 @@ def main():
         listeWishlist.bind('<Double-1>', openWishlist)
 
     def RightFrame():
+        global listeWishlist
+        def creerWishlist():
+            nom = entreeNom.get()
+            if nom :
+                wlo.Savewishlist(nom,[])
+                listeWishlist.insert(tk.END,f'{nom}.txt')
+
+
         rightframe =tk.Frame(root, bg=palette[1])
         rightframe.place(relheight=0.5 , relwidth=0.35 ,relx=0.55, rely=0.4)
 
@@ -66,7 +75,15 @@ def main():
 
         titleLabel = tk.Label(rightframe, bg= palette[4], text= "New Wishlist")
         titleLabel.place(relheight=0.2 , relwidth=0.9 , relx=0.05 , rely=0.09)
-    
+
+        labelnom = tk.Label(rightframe,bg = palette[2], text='Nom de la wishlist')
+        labelnom.place(relheight=0.13, relwidth=0.4, relx=0.3, rely=0.35)
+
+        entreeNom = tk.Entry(rightframe, bg=palette[0])
+        entreeNom.place(relheight=0.13 , relwidth=0.4, relx=0.3, rely=0.53)
+
+        boutonValider = tk.Button(rightframe, bg= palette[2], activebackground=palette[1],text="Valider",command= creerWishlist)
+        boutonValider.place(relheight=0.1, relwidth=0.3, relx=0.35, rely=0.7)
 
     TopFrame()
     LeftFrame()
@@ -184,6 +201,7 @@ def UpdateWishlist(nom):
         #   Faire un get anchor de chacun et detruirece l'element avec de l'id
         #Essai 2
         #   Faire un pop up demandant de doublecliquer sur un element pour le supr
+        print("")
         
     #Adding the 3 listbox
     listUrl=  tk.Listbox(root, bg= palette[0],justify='center')
