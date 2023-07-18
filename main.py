@@ -180,7 +180,10 @@ def UpdateWishlist(nom):
         closeButton.place(relheight=0.1 , relwidth=0.25, relx=0.55, rely=0.7)
 
     def deleting():
-        print("")
+        #Essai 1:
+        #   Faire un get anchor de chacun et detruirece l'element avec de l'id
+        #Essai 2
+        #   Faire un pop up demandant de doublecliquer sur un element pour le supr
         
     #Adding the 3 listbox
     listUrl=  tk.Listbox(root, bg= palette[0],justify='center')
