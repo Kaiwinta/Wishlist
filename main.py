@@ -188,7 +188,7 @@ def UpdateWishlist(nom):
                 saving()
 
             else:
-                print('faux')
+                return 0
 
         validerButton = tk.Button(addwindow,text='Ajouter',command=sendadding)
         validerButton.place(relheight=0.1 , relwidth=0.25 , relx=0.2 , rely=0.7)
