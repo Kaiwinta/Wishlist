@@ -6,29 +6,5 @@ url1,planche lapkapten,50
 url1,alex,109
 url1,support double,80
 url1,sac,110
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-url1,nom,prix
-ahinfha,Worthless,Kaiwinta
-ahinfha,Worthless,Kaiwinta
-ahinfha,Worthless,Kaiwinta
-ahinfha,Worthless,Kaiwinta
-ahinfha,Worthless,Kaiwinta
-ahinfha,Worthless,Kaiwinta
+url1,we integration,90
+url1,vente ecran,-90
