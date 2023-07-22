@@ -164,11 +164,22 @@ def UpdateWishlist(nom):
         urlEntree = tk.Entry(addwindow)
         urlEntree.place(relheight=0.14 , relwidth=0.25, relx=0.05 , rely=0.4)
 
-        nomEntree = tk.Entry(addwindow)
-        nomEntree.place(relheight=0.14 , relwidth=0.25,relx=0.375, rely=0.3)
+        nomEntree = tk.Entry(addwindow,textvariable='Nom')
+        nomEntree.place(relheight=0.14 , relwidth=0.25,relx=0.375, rely=0.4)
 
         prixEntree = tk.Entry(addwindow)
         prixEntree.place(relheight=0.14 , relwidth=0.25,relx=0.70, rely=0.4)
+
+        
+        urlLabel = tk.Label(addwindow,text="Url",bg=palette[1])
+        urlLabel.place(relheight=0.1 , relwidth=0.25, relx=0.05 , rely=0.29)
+
+        nomLabel = tk.Label(addwindow,text='Nom',bg=palette[1])
+        nomLabel.place(relheight=0.1 , relwidth=0.25,relx=0.375, rely=0.29)
+
+        prixLabel = tk.Label(addwindow,text="Prix",bg=palette[1])
+        prixLabel.place(relheight=0.1 , relwidth=0.25,relx=0.70, rely=0.29)
+
 
         def sendadding():
 
@@ -184,7 +195,7 @@ def UpdateWishlist(nom):
 
                 urlEntree.delete(0,tk.END)
                 prixEntree.delete(0,tk.END)
-                urlEntree.delete(0,tk.END)
+                nomEntree.delete(0,tk.END)
                 saving()
 
             else:
