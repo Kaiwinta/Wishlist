@@ -148,7 +148,7 @@ def UpdateWishlist(nom):
 
         saveButton.config(text= 'Saved !!!')
 
-    def modification(typemodif):
+    def modification(typemodif,anchor):
         """
             Objective : show a pop up windows that allow us to add an element 
             or many 
@@ -217,11 +217,11 @@ def UpdateWishlist(nom):
             addwindow.title("Modify Elements")
             validerButton.config(text='Modifier')
             
-            urlLabel = tk.Label(addwindow,text=,bg=palette[1])
-            urlLabel.place(relheight=0.1 , relwidth=0.25, relx=0.05 , rely=0.29)
+            urlLabel = tk.Label(addwindow,text=listUrl.curselection(),bg=palette[1])
+            urlLabel.place(relheight=0.1 , relwidth=0.25, relx=0.05 , rely=0)
 
             nomLabel = tk.Label(addwindow,text='Nom',bg=palette[1])
-            nomLabel.place(relheight=0.1 , relwidth=0.25,relx=0.375, rely=0.29)
+            nomLabel.place(relheight=0.1 , relwidth=0.25,relx=0.375, rely=0)
 
             prixLabel = tk.Label(addwindow,text="Prix",bg=palette[1])
             prixLabel.place(relheight=0.1 , relwidth=0.25,relx=0.70, rely=0.29)
@@ -238,6 +238,7 @@ def UpdateWishlist(nom):
     #Adding the 3 listbox
     listUrl=  tk.Listbox(root, bg= palette[0],justify='center')
     listUrl.place(relheight=0.5 , relwidth=0.2 , relx=0.15 , rely= 0.22)
+    
 
     listNom=  tk.Listbox(root, bg= palette[1],justify='center')
     listNom.place(relheight=0.5 , relwidth=0.2 , relx=0.4 , rely= 0.22)
@@ -247,7 +248,7 @@ def UpdateWishlist(nom):
 
 
     #Adding the 3 bottom Button
-    addButton = tk.Button(root,bg=palette[1],activebackground=palette[0], text='Add', command=adding)
+    addButton = tk.Button(root,bg=palette[1],activebackground=palette[0], text='Add', command=lambda: modification("adding",None))
     addButton.place(relheight=0.06, relwidth=0.12, relx=0.2, rely=0.8)
 
     deleteButton = tk.Button(root,bg=palette[0],activebackground=palette[1])
