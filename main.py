@@ -148,7 +148,7 @@ def UpdateWishlist(nom):
 
         saveButton.config(text= 'Saved !!!')
 
-    def adding():
+    def modification(typemodif):
         """
             Objective : show a pop up windows that allow us to add an element 
             or many 
@@ -157,7 +157,12 @@ def UpdateWishlist(nom):
         addwindow.geometry("400x250+{}+{}".format(int(addwindow.winfo_screenwidth()/2 - 200), int(addwindow.winfo_screenheight()/2 - 112)))
         addwindow.focus_set()
         addwindow.resizable(False,False)
-        addwindow.title("Adding Elements")
+        if typemodif == "adding":
+
+            addwindow.title("Adding Elements")
+        
+        
+
         addwindow.bind('<Escape>',lambda e: addwindow.destroy())
         addwindow.configure(bg=palette[2])
 
@@ -200,12 +205,28 @@ def UpdateWishlist(nom):
 
             else:
                 return 0
-
+            
+        
         validerButton = tk.Button(addwindow,text='Ajouter',command=sendadding)
         validerButton.place(relheight=0.1 , relwidth=0.25 , relx=0.2 , rely=0.7)
 
-        closeButton = tk.Button(addwindow,text='Stop adding',command= addwindow.destroy)
+        closeButton = tk.Button(addwindow,text='Quitter',command= addwindow.destroy)
         closeButton.place(relheight=0.1 , relwidth=0.25, relx=0.55, rely=0.7)
+
+        if typemodif=='modify':
+            addwindow.title("Modify Elements")
+            validerButton.config(text='Modifier')
+            
+            urlLabel = tk.Label(addwindow,text=,bg=palette[1])
+            urlLabel.place(relheight=0.1 , relwidth=0.25, relx=0.05 , rely=0.29)
+
+            nomLabel = tk.Label(addwindow,text='Nom',bg=palette[1])
+            nomLabel.place(relheight=0.1 , relwidth=0.25,relx=0.375, rely=0.29)
+
+            prixLabel = tk.Label(addwindow,text="Prix",bg=palette[1])
+            prixLabel.place(relheight=0.1 , relwidth=0.25,relx=0.70, rely=0.29)
+        
+
 
     def deleting():
         #Essai 1:
