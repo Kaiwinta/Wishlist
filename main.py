@@ -257,7 +257,15 @@ def UpdateWishlist(nom):
     saveButton = tk.Button(root,bg=palette[1],activebackground=palette[0], command = saving, text='Save')
     saveButton.place(relheight=0.06, relwidth=0.12, relx=0.7, rely=0.8)
 
-    changenameButton = tk.Button(root,bg=palette[0],activebackground=palette[1], text= "Modify Wishlist Parameter")
+    def changeparameter():
+        paramWindow = tk.Toplevel()  
+        paramWindow.geometry("400x250+{}+{}".format(int(paramWindow.winfo_screenwidth()/2 - 200), int(paramWindow.winfo_screenheight()/2 - 112)))
+        paramWindow.focus_set()
+        paramWindow.resizable(False,False)
+
+        
+
+    changenameButton = tk.Button(root,bg=palette[0],activebackground=palette[1], text= "Modify Wishlist Parameter",command = changeparameter)
     changenameButton.place(relheight=0.06, relwidth=0.2, relx=0.4, rely=0.9)
 
 
