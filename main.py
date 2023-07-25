@@ -272,7 +272,7 @@ def UpdateWishlist(nom):
             wlo.change_Wishlist_name(newname,nom)
             root.destroy()
             UpdateWishlist(newname)
-            paramWindow.focus_set()
+            paramWindow.focus()
             
         nameEntry = tk.Entry(paramWindow)
         nameEntry.pack()
