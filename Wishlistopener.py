@@ -1,5 +1,5 @@
 from csv import reader
-from os import listdir
+from os import listdir, rename, remove
 """
 This is the logical part of the projekt:
 
@@ -53,3 +53,10 @@ def getwishlistname():
         #Os.listdir permet de lister les fichier a partir d'un certain path (dans notre cas wishlist)
         liste_files.append(path)
     return liste_files
+
+def change_Wishlist_name(new, old):
+    rename(f'wishlist/{old}',f'wishlist/{new}')
+
+def delete_Wishlist(name):
+    remove(f'wishlist/{name}')
+

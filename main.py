@@ -60,7 +60,7 @@ def main():
         def creerWishlist():
             nom = entreeNom.get()
             if nom :
-                wlo.Savewishlist(nom,[])
+                wlo.Savewishlist(nom,[['Url','Nom','Prix'],['','','']])
                 listeWishlist.insert(tk.END,f'{nom}.txt')
 
 
@@ -262,11 +262,25 @@ def UpdateWishlist(nom):
         paramWindow.geometry("400x250+{}+{}".format(int(paramWindow.winfo_screenwidth()/2 - 200), int(paramWindow.winfo_screenheight()/2 - 112)))
         paramWindow.focus_set()
         paramWindow.resizable(False,False)
+        paramWindow.config(bg=palette[0])
 
-        
+        LabelTitre = tk.Label(paramWindow,bg=palette[1],text='Change Parameter')
+        LabelTitre.place(relheight=0.2, relwidth=1, relx=0, rely=0.1)
 
-    changenameButton = tk.Button(root,bg=palette[0],activebackground=palette[1], text= "Modify Wishlist Parameter",command = changeparameter)
-    changenameButton.place(relheight=0.06, relwidth=0.2, relx=0.4, rely=0.9)
+        def change_Wishlist_name():
+            newname = nameEntry.get()+'.txt'
+            wlo.change_Wishlist_name(newname,nom)
+            root.destroy()
+            UpdateWishlist(newname)
+            paramWindow.focus_set()
+            
+        nameEntry = tk.Entry(paramWindow)
+        nameEntry.pack()
+
+        buttonchangename = tk.Button(paramWindow, command= change_Wishlist_name)
+        buttonchangename.pack(side='right')
+    changeparamButton = tk.Button(root,bg=palette[0],activebackground=palette[1], text= "Modify Wishlist Parameter",command = changeparameter)
+    changeparamButton.place(relheight=0.06, relwidth=0.2, relx=0.4, rely=0.9)
 
 
     
