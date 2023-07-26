@@ -4,6 +4,9 @@ import Wishlistopener as wlo
 palette = ["#16697A","#489FB5","#82C0CC","#EDE7E3","#FFA62B"]
 
 def main():
+    """
+        The main window of the interface
+    """ 
     global palette, listeWishlist
 
     root = tk.Tk()  
@@ -16,6 +19,9 @@ def main():
     root.configure(bg=palette[2])
 
     def TopFrame():
+        """
+            Topframe of the page
+        """
         topframe = tk.Frame(root, bg= palette[0])
         topframe.place(relheight=0.15 , relwidth=1 , relx=0, rely=0.1)
 
@@ -27,6 +33,9 @@ def main():
 
 
     def LeftFrame():
+        """
+            The Left frame of the current page
+        """
         global listeWishlist
         leftframe =tk.Frame(root, bg=palette[1])
         leftframe.place(relheight=0.5 , relwidth=0.35 ,relx=0.1 , rely=0.4)
@@ -44,10 +53,22 @@ def main():
         listeWishlist.place(relheight=0.6 , relwidth=0.8 , relx=0.1 , rely=0.35)
 
         def searchlist(event=None):
+            """
+                Permet de Chercher toutes les wishlist existance   
+
+            Args:
+                event (event, optional): The binding event. Defaults to None.
+            """
             liste_item = tk.Variable(value= wlo.getwishlistname())
             listeWishlist.config(listvariable=liste_item)
 
         def openWishlist(event=None):
+            """
+                Permet d'ouvrir une wishlit
+
+            Args:
+                event (event, optional): Binding event. Defaults to None.
+            """
             nomliste = listeWishlist.get(listeWishlist.curselection())
             if nomliste:
                 UpdateWishlist(nomliste)
@@ -56,8 +77,14 @@ def main():
         listeWishlist.bind('<Double-1>', openWishlist)
 
     def RightFrame():
+        """
+            The right frame of the page
+        """
         global listeWishlist
         def creerWishlist():
+            """
+                Permet de creer une wishlist avec un nom voulu par l'utilisateur
+            """
             nom = entreeNom.get()
             if nom :
                 wlo.Savewishlist(nom,[['Url','Nom','Prix'],['','','']])
@@ -90,7 +117,13 @@ def main():
     RightFrame()
     root.mainloop()
 
-def UpdateWishlist(nom):
+def UpdateWishlist(nom : str):
+    """Affiche une fenetre qui permet de modifier une wishlist et voir son contenu
+
+    Args:
+        nom (str): nom de la wishlist a étudier
+
+    """
     global palette
     root = tk.Toplevel()  
     root.geometry("800x450+{}+{}".format(int(root.winfo_screenwidth()/2 - 400), int(root.winfo_screenheight()/2 - 225)))
@@ -120,7 +153,16 @@ def UpdateWishlist(nom):
     botline  = tk.Frame(topframe, bg=palette[4])
     botline.place(relheight=0.1 , relwidth=1 , relx=0, rely=0.9)
 
-    def afficherliste(nom):
+    def afficherliste(nom: str):
+        """
+        Permet d'afficher les éléments dans les listbox 
+
+        Args:
+            nom (str): Le nom de la wishlist
+
+        Returns:
+            int : Lorsque ça ne marche pas
+        """
         try:
             t = wlo.openWishlist(nom)
             
@@ -187,6 +229,11 @@ def UpdateWishlist(nom):
 
 
         def sendadding():
+            """Permet d'envoyer une modification de la wishlist et de save
+
+            Returns:
+                int: If user dont enter all the fields
+            """
 
             nom = nomEntree.get()
             prix = prixEntree.get()
@@ -258,6 +305,9 @@ def UpdateWishlist(nom):
     saveButton.place(relheight=0.06, relwidth=0.12, relx=0.7, rely=0.8)
 
     def changeparameter():
+        """
+            Creer une fenetre qui permet de modifier les parametres de la wishlist
+        """
         paramWindow = tk.Toplevel()  
         paramWindow.geometry("400x250+{}+{}".format(int(paramWindow.winfo_screenwidth()/2 - 200), int(paramWindow.winfo_screenheight()/2 - 112)))
         paramWindow.focus_set()
@@ -268,6 +318,9 @@ def UpdateWishlist(nom):
         LabelTitre.place(relheight=0.2, relwidth=1, relx=0, rely=0.1)
 
         def change_Wishlist_name():
+            """
+                Permet de changer le nom de la wihslist actuelle
+            """
             newname = nameEntry.get()+'.txt'
             wlo.change_Wishlist_name(newname,nom)
             root.destroy()
@@ -279,6 +332,7 @@ def UpdateWishlist(nom):
 
         buttonchangename = tk.Button(paramWindow, command= change_Wishlist_name)
         buttonchangename.pack(side='right')
+
     changeparamButton = tk.Button(root,bg=palette[0],activebackground=palette[1], text= "Modify Wishlist Parameter",command = changeparameter)
     changeparamButton.place(relheight=0.06, relwidth=0.2, relx=0.4, rely=0.9)
 
