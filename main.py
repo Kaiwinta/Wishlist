@@ -299,7 +299,7 @@ def UpdateWishlist(nom : str):
     addButton.place(relheight=0.06, relwidth=0.12, relx=0.2, rely=0.8)
 
     deleteButton = tk.Button(root,bg=palette[0],activebackground=palette[1],text='Delete')
-    deleteButton.place(relheight=0.06, relwidth=0.12, relx=0.45, rely=0.8)
+    deleteButton.place(relheight=0.06, relwidth=0.12, relx=0.44, rely=0.8)
 
     saveButton = tk.Button(root,bg=palette[1],activebackground=palette[0], command = saving, text='Save')
     saveButton.place(relheight=0.06, relwidth=0.12, relx=0.7, rely=0.8)
@@ -312,9 +312,9 @@ def UpdateWishlist(nom : str):
         paramWindow.geometry("400x250+{}+{}".format(int(paramWindow.winfo_screenwidth()/2 - 200), int(paramWindow.winfo_screenheight()/2 - 112)))
         paramWindow.focus_set()
         paramWindow.resizable(False,False)
-        paramWindow.config(bg=palette[0])
+        paramWindow.config(bg=palette[1])
 
-        LabelTitre = tk.Label(paramWindow,bg=palette[1],text='Change Parameter')
+        LabelTitre = tk.Label(paramWindow,bg=palette[0],text='Change Parameter')
         LabelTitre.place(relheight=0.2, relwidth=1, relx=0, rely=0.1)
 
         def change_Wishlist_name():
@@ -328,10 +328,10 @@ def UpdateWishlist(nom : str):
             paramWindow.focus()
             
         nameEntry = tk.Entry(paramWindow)
-        nameEntry.pack()
+        nameEntry.place(relheight=0.1 , relwidth=0.3 ,relx=0.2 , rely=0.6)
 
-        buttonchangename = tk.Button(paramWindow, command= change_Wishlist_name)
-        buttonchangename.pack(side='right')
+        buttonchangename = tk.Button(paramWindow, command= change_Wishlist_name, text='Change Name')
+        buttonchangename.place(relheight=0.1, relwidth=0.25, relx=0.55 ,rely=0.6)
 
     changeparamButton = tk.Button(root,bg=palette[0],activebackground=palette[1], text= "Modify Wishlist Parameter",command = changeparameter)
     changeparamButton.place(relheight=0.06, relwidth=0.2, relx=0.4, rely=0.9)
