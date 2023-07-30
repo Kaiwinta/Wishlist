@@ -242,7 +242,7 @@ def UpdateWishlist(nom : str):
             if prix and nom and url :
                     
                 listNom.insert(tk.END,nom)
-                listPrix.insert(tk.END,url)
+                listPrix.insert(tk.END,prix)
                 listUrl.insert(tk.END,url)
 
                 urlEntree.delete(0,tk.END)
