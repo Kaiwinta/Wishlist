@@ -1,0 +1,7 @@
+Url,Nom,Prix
+,,
+https://www.rueducommerce.fr/p-27-led-g27q-gigabyte-3170654-26481.html,Second ecran ,https://www.rueducommerce.fr/p-27-led-g27q-gigabyte-3170654-26481.html
+https://www.amazon.fr/Ergosolid-Support-pivotant-Robuste-moniteurs/dp/B097Y1R66K/ref=sr_1_11?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3T2YUTY4SSGJQ&keywords=support+double+ecran&qid=1690733645&sprefix=support+double+ecran%2Caps%2C146&sr=8-11,Bras double ecran,https://www.amazon.fr/Ergosolid-Support-pivotant-Robuste-moniteurs/dp/B097Y1R66K/ref=sr_1_11?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3T2YUTY4SSGJQ&keywords=support+double+ecran&qid=1690733645&sprefix=support+double+ecran%2Caps%2C146&sr=8-11
+https://www.amazon.fr/gp/product/B08G1DTTQR/ref=ewc_pr_img_2?smid=A2AO6YJUQHL9H3&psc=1,Cable DP 3m ,https://www.amazon.fr/gp/product/B08G1DTTQR/ref=ewc_pr_img_2?smid=A2AO6YJUQHL9H3&psc=1
+https://www.amazon.fr/gp/product/B08J4DJ2LL/ref=ox_sc_act_title_7?smid=A16152ATGHAQYQ&psc=1,Sac rog,https://www.amazon.fr/gp/product/B08J4DJ2LL/ref=ox_sc_act_title_7?smid=A16152ATGHAQYQ&psc=1
+https://www.amazon.fr/gp/product/B07VMXG354/ref=ewc_pr_img_4?smid=A3LFYDM9FUPLHH&psc=1,usb hub,https://www.amazon.fr/gp/product/B07VMXG354/ref=ewc_pr_img_4?smid=A3LFYDM9FUPLHH&psc=1
