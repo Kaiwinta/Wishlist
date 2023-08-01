@@ -195,6 +195,7 @@ def UpdateWishlist(nom : str):
             Objective : show a pop up windows that allow us to add an element 
             or many 
         """
+        anchor = anchor[0]
         addwindow = tk.Toplevel()  
         addwindow.geometry("400x250+{}+{}".format(int(addwindow.winfo_screenwidth()/2 - 200), int(addwindow.winfo_screenheight()/2 - 112)))
         addwindow.focus_set()
@@ -202,9 +203,7 @@ def UpdateWishlist(nom : str):
         if typemodif == "adding":
 
             addwindow.title("Adding Elements")
-        
-        
-
+    
         addwindow.bind('<Escape>',lambda e: addwindow.destroy())
         addwindow.configure(bg=palette[2])
 
@@ -260,9 +259,31 @@ def UpdateWishlist(nom : str):
         closeButton = tk.Button(addwindow,text='Quitter',command= addwindow.destroy)
         closeButton.place(relheight=0.1 , relwidth=0.25, relx=0.55, rely=0.7)
 
+        def sendmodifier( anchor : int):
+            print(anchor , type(anchor))
+            valeur_url = list(listUrl.get(0 , tk.END))
+            print(valeur_url)
+            valeur_url[anchor]= urlEntree.get()
+            
+            
+            listUrl.configure(listvariable= valeur_url)
+
+            valeur_prix = list(listPrix.get(0 , tk.END))
+            valeur_prix[anchor] = prixEntree.get()
+           
+            listPrix.configure(listvariable= valeur_prix)
+
+            valeur_nom = list(listNom.get(0 , tk.END))
+            valeur_nom[anchor] = nomEntree.get()
+            
+            listNom.configure(listvariable= valeur_nom)
+            root.update()
+
+            saving()
+
         if typemodif=='modify':
             addwindow.title("Modify Elements")
-            validerButton.config(text='Modifier')
+            validerButton.config(text='Modifier', command = lambda : sendmodifier( anchor))
             
             urlLabel = tk.Label(addwindow,text=listUrl.curselection(),bg=palette[1])
             urlLabel.place(relheight=0.1 , relwidth=0.25, relx=0.05 , rely=0)
@@ -298,7 +319,7 @@ def UpdateWishlist(nom : str):
     addButton = tk.Button(root,bg=palette[1],activebackground=palette[0], text='Add', command=lambda: modification("adding",None))
     addButton.place(relheight=0.06, relwidth=0.12, relx=0.2, rely=0.8)
 
-    deleteButton = tk.Button(root,bg=palette[0],activebackground=palette[1],text='Delete')
+    deleteButton = tk.Button(root,bg=palette[0],activebackground=palette[1],text='Delete', command= lambda : modification('modify',listNom.curselection()))
     deleteButton.place(relheight=0.06, relwidth=0.12, relx=0.45, rely=0.8)
 
     saveButton = tk.Button(root,bg=palette[1],activebackground=palette[0], command = saving, text='Save')
