@@ -282,6 +282,9 @@ def UpdateWishlist(nom : str):
             saving()
 
         if typemodif=='modify':
+            """
+                The goal is to change an element in a listbox so we muss copy all in a list then change abn element
+            """
             addwindow.title("Modify Elements")
             validerButton.config(text='Modifier', command = lambda : sendmodifier( anchor))
             
@@ -357,8 +360,6 @@ def UpdateWishlist(nom : str):
     changeparamButton = tk.Button(root,bg=palette[0],activebackground=palette[1], text= "Modify Wishlist Parameter",command = changeparameter)
     changeparamButton.place(relheight=0.06, relwidth=0.2, relx=0.4, rely=0.9)
 
-
-    
     #The expose binding allow us the show the wishlist when we call updateWishlist()
     root.bind("<Expose>", afficherliste(nom))
 
